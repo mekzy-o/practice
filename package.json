@@ -4,6 +4,7 @@
   "description": "This is a practice of my andela project",
   "main": "app.js",
   "scripts": {
+    "start": "nodemon --exec babel-node ./server/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,5 +26,8 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
   }
 }
