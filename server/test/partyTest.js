@@ -17,7 +17,7 @@ const addressOmitted = {
 };
 const logoUrlOmitted = {
   name: 'PDP',
-  hqaddress: 'Abuja, Nigeria',
+  hqAddress: 'Abuja, Nigeria',
 };
 
 
@@ -82,6 +82,16 @@ describe('POST /parties', () => {
       .end((err, res) => {
         res.should.have.status(400);
         res.body.error.should.be.eql('hqAddress is required');
+        done(err);
+      });
+  });
+  it('should NOT CREATE party if logoUrl field is OMITTED', (done) => {
+    chai.request(app)
+      .post('/api/v1/parties')
+      .send(logoUrlOmitted)
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.error.should.be.eql('logoUrl is required');
         done(err);
       });
   });
