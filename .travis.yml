@@ -9,7 +9,7 @@ cache:
 before_script:
   - npm install
 script: 
-  - nyc --reporter=lcov --reporter=text-lcov npm test
+  - npm test
 after_success: 
   - npm run coverage
  
