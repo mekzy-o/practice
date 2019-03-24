@@ -36,7 +36,7 @@ export default class PartyController {
     console.log(req.body);
     party.push(data);
     return res.status(201).send({
-      status: 200,
+      status: 201,
       message: 'parties created successfully',
       party,
     });
@@ -86,8 +86,8 @@ export default class PartyController {
     const data = party.find(data => data.id === parseInt(id, 10));
     if (data) {
       data.name = req.body.name;
-      return res.status(201).send({
-        status: 201,
+      return res.status(200).send({
+        status: 200,
         message: 'party added successfully',
         data: [data],
       });

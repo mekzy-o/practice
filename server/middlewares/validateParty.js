@@ -36,7 +36,11 @@ class validate {
     req.checkParams('id')
       .notEmpty()
       .trim()
-      .isNumeric();
+      .isNumeric()
+      .withMessage('id must be Numeric');
+    req.checkBody('name')
+      .notEmpty()
+      .withMessage('Party Name is required')
     const errors = req.validationErrors();
     if (errors) {
       return res.status(400).json({

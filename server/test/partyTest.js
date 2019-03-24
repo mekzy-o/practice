@@ -95,4 +95,36 @@ describe('POST /parties', () => {
         done(err);
       });
   });
+  it('should CREATE a single party', (done) => {
+    const newParty = {
+      name: 'PDP',
+      hqAddress: 'Abuja, Nigeria',
+      logoUrl: 'https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    };
+    chai.request(app)
+      .post('/api/v1/parties')
+      .send(newParty)
+      .end((err, res) => {
+        res.should.have.status(201);
+        res.body.should.have.property('status').eql(201);
+        res.body.should.be.a('object');
+        // res.body.data.should.be.a('array');
+        done(err);
+      });
+  });
+});
+
+// Test for updating a party name
+// Test when name is ommitted
+describe('PATCH /parties', () => {
+  it('should NOT UPDATE party if id field is not numeric', (done) => {
+    chai.request(app)
+      .patch('/api/v1/parties/1')
+      .send({})
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.error.should.be.eql('Party Name is required');
+        done(err);
+      });
+  });
 });

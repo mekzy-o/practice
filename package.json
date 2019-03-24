@@ -4,7 +4,8 @@
   "description": "This is a practice of my andela project",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon --exec babel-node ./server/app.js",
+    "start": "babel-node app.js",
+    "dev": "nodemon --exec babel-node ./server/app.js",
     "test": "nyc --reporter=text mocha -c ./server/test/*.js --exit --require babel-core/register"
   },
   "repository": {
