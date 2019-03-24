@@ -14,9 +14,6 @@
     "type": "git",
     "url": "git+https://github.com/mekzy-o/practice.git"
   },
-  "keywords": [
-    "\"Politico\""
-  ],
   "author": "Emeka Ofe",
   "license": "ISC",
   "bugs": {
