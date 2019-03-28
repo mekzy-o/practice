@@ -1,104 +1,78 @@
-import party from '../model/partydb';
+import db from '../model/db';
+import {
+  getParty,
+  createParty,
+  party,
+  updatePartyName,
+  deleteParty,
+} from '../model/partyQuery';
 
-export default class PartyController {
-/**
-   * @method getAllParties
-   * @description retrieves a list of all Parties
-   * @param {object} req - The Request Object
-   * @param {object} res - The Response Object
-   * @returns {object} JSON API Response
-   */
+class PartyController {
 
-  static getAllParties(req, res) {
-    res.status(200).send({
-      status: 200,
-      message: 'parties retrieved successfully',
-      data: party,
-    });
-  }
-
-  /**
-   * @method createParty
-   * @description Post a given response/parameter to party database
-   * @param {object} req - The Request Object
-   * @param {object} res - The Response Object
-   * @returns {object} JSON API Response
-   */
-  static createParty(req, res) {
-    const { name, hqAddress, logoUrl } = req.body;
-    const data = {
-      id: party.length + 1,
-      name,
-      hqAddress,
-      logoUrl,
-    };
-    console.log(data);
-    console.log(req.body);
-    party.push(data);
-    return res.status(201).send({
-      status: 201,
-      message: 'parties created successfully',
-      party,
-    });
-  }
-
-  /**
-   * @method getAParty
-   * @description retrieves party with specific ID
-   * @param {object} req - The Request Object
-   * @param {object} res - The Response Object
-   * @returns {object} JSON API Response
-   */
-  static getParty(req, res) {
-    const { id } = req.params;
-
-    const data = party.find(data => data.id === parseInt(id, 10));
-    if (data) {
-      return res.status(200).send({
-        status: 200,
-        message: 'party retrieved successfully',
-        data: [data],
+  static async createParty(req, res) {
+    try {
+      const { name, hqAddress, logoUrl } = req.body;
+      const values = [name, hqAddress, logoUrl];
+      const { rows } = await db.query(createParty, values);
+      if (rows) {
+        return res.status(201).json({
+          status: 201,
+          data: rows,
+        });
+      }
+    } catch (error) {
+      return res.status(500).json({
+        status: 500,
+        message: error.message,
       });
     }
-    res.status(404).send({
-      error: 'no party found with that id',
-    });
   }
 
-  static deleteParty(req, res) {
-    const { id } = req.params;
-    const data = party.filter(data => data.id === id)[0];
-    const index = party.indexOf(data);
-    if (index !== -1) {
-      party.splice(index, 1);
-      res.status(200).json({
+  static async getAllParties(req, res) {
+    try {
+      const result = await db.query(getParty);
+      if (result.rowCount < 1) {
+        return res.status(404).json({
+          status: 404,
+          error: 'no party has been created',
+        });
+      }
+      return res.status(200).json({
         status: 200,
-        data: [{ message: `Party with id ${id} deleted.` }],
+        data: result.rows,
       });
-  	} else {
-  		res.status(201).json({
-        message: `Party with id ${id} not found.` });
+    } catch (err) {
+      return res.status(500).json({
+        status: 500,
+        error: err.message,
+      });
     }
   }
 
-  static updatePartyName(req, res) {
-    const { id } = req.params;
-    const data = party.find(data => data.id === parseInt(id, 10));
-    if (data) {
-      data.name = req.body.name;
-      return res.status(200).send({
+  static async getParty(req, res) {
+    try {
+      const { id } = req.params;
+      const { rows } = await db.query(party, [id]);
+      if (!rows[0]) {
+        return res.status(404).json({
+          status: 404,
+          error: "party not found"
+        });
+      }
+      return res.status(200).json({
         status: 200,
-        message: 'party added successfully',
-        data: [data],
+        data: rows[0]
+      });
+    } catch (err) {
+      return res.status(500).json({
+        status: 500,
+        error: err.message
       });
     }
-    return res.status(404).send({
-      status: 404,
-      error: 'name of party not found!',
-    });
-
   }
 }
 
+
+export default PartyController;
 
 

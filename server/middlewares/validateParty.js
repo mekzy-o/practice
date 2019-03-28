@@ -1,3 +1,5 @@
+import db from '../model/db';
+
 const {
   checkBody,
   validationErrors,
@@ -6,6 +8,9 @@ const {
 class validate {
   static input(req, res, next) {
     req.checkBody('name')
+      .custom(value => db.query('select * from parties where name = $1', [value]).then((party) => {
+        if (party.rowCount >= 1) throw new Error('name already exists');
+      }))
       .notEmpty()
       .withMessage('Party Name is required')
       .trim()
@@ -36,11 +41,10 @@ class validate {
     req.checkParams('id')
       .notEmpty()
       .trim()
+      .matches(/^[0-9]+$/)
+      .withMessage('invalid id format')
       .isNumeric()
       .withMessage('id must be Numeric');
-    req.checkBody('name')
-      .notEmpty()
-      .withMessage('Party Name is required')
     const errors = req.validationErrors();
     if (errors) {
       return res.status(400).json({
