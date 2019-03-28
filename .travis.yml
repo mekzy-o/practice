@@ -1,17 +1,24 @@
 language: node_js
 node_js:
   - "stable"
+env:
+global:
+  - export NODE_ENV=test
+dist: trusty
+addons:
+    postgresql: "9.5"
+services:
+  - postgresql
 notifications:
-  email: false
+  email: true
 cache:
   directories:
     - node_modules
 before_script:
+  - psql -c 'create database Politico;' -U postgres
   - npm install
 script: 
-  - npm run test
+  - npm test
 after_success:
   - npm run coverage
-  - npm run report-coverage
   - npm run coveralls
- 
