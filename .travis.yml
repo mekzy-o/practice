@@ -1,19 +1,21 @@
 language: node_js
 node_js:
-- "10.8"
-- "8.12"
-dist: trusty
+  - "stable"
 env:
+global:
+  - export NODE_ENV=test
 dist: trusty
+addons:
+    postgresql: "9.5"
 services:
-- postgresql
-branches:
-except:
-- gh-pages
-- master
+  - postgresql
+notifications:
+  email: true
+cache:
+  directories:
+    - node_modules
 before_script:
 - psql -c "create database PoliticoTest;" -U postgres
-- psql -c "create user emeka with password 'maths102';" -U postgres
 - npm install
 script:
 - npm test
