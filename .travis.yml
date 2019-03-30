@@ -4,8 +4,6 @@ node_js:
 - "8.12"
 dist: trusty
 env:
-global:
-- export NODE_ENV=test
 dist: trusty
 services:
 - postgresql
@@ -14,8 +12,8 @@ except:
 - gh-pages
 - master
 before_script:
-- psql -c "create user emeka with password 'maths102';" -U postgres
 - psql -c "create database PoliticoTest;" -U postgres
+- psql -c "create user emeka with password 'maths102';" -U postgres
 - npm install
 script:
 - npm test
