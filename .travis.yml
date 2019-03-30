@@ -1,17 +1,20 @@
 language: node_js
 node_js:
-  - "stable"
-notifications:
-  email: false
-cache:
-  directories:
-    - node_modules
+- "10.8"
+- "8.12"
+dist: trusty
+env:
+dist: trusty
+services:
+- postgresql
+branches:
+except:
+- gh-pages
+- master
 before_script:
-  - npm install
-script: 
-  - npm run test
-after_success:
-  - npm run coverage
-  - npm run report-coverage
-  - npm run coveralls
- 
+- psql -c "create database PoliticoTest;" -U postgres
+- psql -c "create user emeka with password 'maths102';" -U postgres
+- npm install
+script:
+- npm test
+after_success: npm run coverage
