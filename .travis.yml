@@ -15,7 +15,7 @@ cache:
   directories:
     - node_modules
 before_script:
-- psql -c "create database PoliticoTest;" -U postgres
+- psql -c "create database Politico;" -U postgres
 - npm install
 script:
 - npm test
