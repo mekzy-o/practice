@@ -8,7 +8,7 @@
     "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "start": "babel-node ./server/app.js",
     "dev": "nodemon --exec babel-node ./server/app.js",
-    "test": "npm run migrate && nyc --reporter=html --reporter=text mocha ./server/test/*.test.js --require @babel/register --exit",
+    "test": "set NODE_ENV='test' && npm run migrate && nyc --reporter=html --reporter=text mocha ./server/test/*.test.js --require @babel/register --exit",
     "migrate": "babel-node ./server/model/migration"
   },
   "repository": {
