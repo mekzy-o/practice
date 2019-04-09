@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset='utf-8'>
+		<meta name='viewport' content='width=device-width'initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>POLITICO | POLITICIAN</title>
+		<link rel='stylesheet' href='./assets/css/styles.css'>
+		<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+	</head>
+	
+	<body>
+
+		<!-- HEADER SECTION BEGINS HERE-->
+		<header>
+			
+			<div class='container'>
+				<div id='index-logo'>
+						<h1>POLITICO</h1>
+				</div>
+				<nav>
+					<ul>
+						<li><a href='index.html'>HOME</a></li>
+						<li class='current'><a href='login.html'>LOGIN</a></li>
+						<li><a href='signup.html'>SIGN UP</a></li>
+						<li><a href='politician.html'>POLITICIAN</a></li>
+					</ul>
+				</nav>
+
+			</div>
+		</header>
+		<!-- HEADER SECTION ENDS HERE -->
+
+		<!-- MAIN STARTS HERE-->
+		<main>
+			<!-- SECTION STARTS HERE-->
+			<section>
+				<div class='container'>
+						<form class='center-form' id='login-form'>
+							<h3>USER SIGN IN</h3>
+
+							<label for="email">Email Address</label><input type="email" name="email" placeholder="Enter Email Address" id='email' required>
+
+		        			<label for="password">Password</label>
+		       		 		<input type="password" name="password" placeholder="Enter Password" id='password' required>
+		       		 	
+		       		 		<span class='light-weight'><a href='reset.html'>Forgot password?</a></span>
+
+		       		 		<button type="submit" name="login" formaction="user-dashboard.html">LOG IN</button>
+		       		 		<hr>
+		       		 		<span class='light-weight'>Don't have an account?<a href='signup.html'> Sign up</a>
+		     			</form>
+                 </div>
+                 <div id='error'></div>
+			</section>
+			<!-- SECTION ENDS HERE-->
+		</main>
+		<!-- MAIN ENDS HERE-->
+
+		<footer class='reset-footer'>
+			<p>Politico | Copyright &copy; 2019</p>
+		</footer>
+
+        <!-- <script src='./assets/js/script.js'></script> -->
+        <script src='./assets/js/user/clientLogin.js'></script>
+	</body>
+</html>

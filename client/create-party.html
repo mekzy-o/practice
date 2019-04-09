@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<meta charset='utf-8'>
+		<meta name='viewport' content='width=device-width' initial-scale=1.0>
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>POLITICO | CREATE PARTY</title>
+		<link rel='stylesheet' href='./assets/css/styles.css'>
+		<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+	</head>
+
+	<body>
+		<!-- HEADER BEGINS HERE-->
+		<header>
+			<div class='container'>
+				<div id='index-logo'>
+					<h1>POLITICO</h1>
+				</div>
+				<nav>
+					<ul>
+						<li><a href='index.html'>HOME</a></li>
+						<li><a href='login.html'>LOGOUT</a></li>
+						<li class='current'><a href='admin.html'>ADMIN</a></li>
+						<li><a href='politician.html'>POLITICIAN</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<!-- HEADER ENDS HERE-->
+
+		<!-- MAIN SECTION BEGINS HERE-->
+		<main>
+
+		<!-- SECTION FOR THE CONTAINER BEGINS HERE-->
+			<section>
+				<div class='container'>
+					
+						<form class="center-form" id='party-form'>
+							<h3>CREATE A POLITICAL PARTY</h3>
+						 	<div class='container'>
+								<label for="name-of-party">Name of Party <span>*</span></label>
+								<input type="text" id="party-name" placeholder="Enter Party Name" required>
+								
+								<label for="hqaddress">Hq Address <span>*</span></label>
+								<input type="text" id="hqaddress" placeholder="Enter Headquarter Address" required>
+
+								<label for="logourl">LogoUrl <span>*</span></label>
+								<input type="text" id="logourl" placeholder="Enter LogoUrl" required>
+
+		       		 			<button type="submit">Create</button>
+		       		 		</div>
+		     			</form>
+		     	</div>
+			</section>
+		<!-- SECTION FOR THE CONTAINER ENDS HERE-->
+		
+		</main>
+		<!-- MAIN SECTION ENDS HERE-->
+
+		<footer class="reset-footer">
+			<p>Politico | Copyright &copy; 2019</p>
+		</footer>
+		<script src='./assets/js/admin/createparty.js'></script>
+	</body>
+</html>

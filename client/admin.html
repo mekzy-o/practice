@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset='utf-8'>
+		<meta name='viewport' content='width=device-width' initial-scale=1.0>
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>POLITICO | ADMIN PAGE</title>
+		<link rel='stylesheet' href='./assets/css/styles.css'>
+		<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+	</head>
+	<body>
+		<!-- HEADER SECTION STARTS HERE-->
+		<header>
+			<div class='container'>
+				<div id='index-logo'>
+						<h1>POLITICO</h1>
+				</div>
+				<nav>
+					<ul>
+						<li><a href='index.html'>HOME</a></li>
+						<li><a href='login.html'>LOGOUT</a></li>
+						<li class='current'><a href='admin.html'>ADMIN</a></li>
+						<li><a href='politician.html'>POLITICIAN</a></li>
+					</ul>
+				</nav>
+
+			</div>
+		</header>
+		<!-- HEADER SECTION ENDS HERE-->
+
+		<!-- MAIN SECTION STARTS HERE-->
+		<main>
+
+		 <!-- SECTION CONTAINING ADMIN PAGE STARTS HERE-->
+		  	<section>
+				<h2 class="admin-title">ADMIN DASHBOARD</h2>
+
+				<div class="admin-report">
+					<div class="report-stat">
+			        	<span>Total Users</span>
+			          	<p>50</p>
+		        	</div>
+
+			       	<div class="report-stat">
+			        	<span>Parties created</span>
+			         	<p>50</p>
+			         	<a href='create-party.html'><button type='submit'>Create Political Party</button></a>
+			        </div>
+
+			        <div class="report-stat">
+			        	<span>Parties deleted</span>
+			          	<p>20</p>
+			        </div>
+
+			        <div class="report-stat">
+			        	<span>Government Offices</span>
+			          	<p>10</p>
+			          <a href='create-govt-office.html'><button type='submit'>Create Government Office</button></a>
+			        </div>
+
+			        <div class="report-stat">
+			        	<span>Total Politicians</span>
+			          	<p>20</p>
+			          	<a href='admin-aspirant.html'><button type='submit'>View New Aspirants</button></a>
+			        </div>
+		   	 	</div>
+		      
+		    <!-- SECTION ENCLOSING ADMIN TABLE STARTS HERE-->
+		    <section>
+		   
+		  	 	<div class="admin-table">
+
+         			 <table class="stats-table" id='party-table'>
+           				<tbody>
+			              	<tr>
+				                <th>S/N</th>
+				                <th>Name of Political Party</th>
+				                <th>Hq Address</th>
+				                <th>Action</th>
+			              	</tr>
+			             	 <tr>
+				                <td>1</td>
+				                <td>
+				                  People Republic Party (PCP)
+				                </td>
+				                <td> 34, Oyekan Street, Surulere, Lagos, Nigeria</td>
+				                <td>
+				                	<button class='delete'>Delete</buton>
+				                	<button class="edit">Edit</button>
+				                </td>
+			              	</tr>
+
+			              	<tr>
+				                <td>2</td>
+				                <td>
+				                  All People Party(APP)
+				                </td>
+				                <td>75, Bode Thomas Street, Surulere, Lagos, Nigeria</td>
+				                <td><button class='delete'>Delete</button>
+				                	<button class='edit'>Edit</button>
+				                </td>
+			              	</tr>
+
+			              	<tr>
+				                <td>3</td>
+				                <td>
+				                 	All Progressive Grand Party(APGP)
+				                </td>
+				                <td>69, Adebola Street, Ikeja, Lagos, Nigeria</td>
+				                <td>
+				                	<button class='delete'>Delete</button>
+				                	<button class="edit">Edit</button>
+				                </td>
+			              	</tr>
+
+               			  	<tr>
+             			  	   <td>4</td>
+				               <td>
+				                  Conservative People's Party (CPP)
+				               </td>
+				               <td>17, Anifowoshe Close, Surulere, Lagos, Nigeria</td>
+				               <td>
+					               <button class='delete'>Delete</button>
+					               <button class='edit'>Edit</button>
+				               </td>
+			               </tr>
+
+              			  	<tr>
+				                <td>5</td>
+				                <td>
+				                 	Local Community Party (LCP)
+				                </td>
+				                <td>1 Ajose Street, Ajah, Lagos, Nigeria</td>
+				                <td>
+				                	<button class='delete'>Delete</button>
+				                	<button class='edit'>Edit</button>
+				                </td>
+              				</tr>
+
+				       		<tr>
+					         	<td>6</td>
+					           	<td>
+				                  	National People Party (NPP)
+				                </td>
+				                <td>52, Ilotumi Street, Lagos, Nigeria</td>
+				                <td>
+				                	<button class='delete'>Delete</butto>
+				                	<button class="edit">Edit</button>
+				                </td>
+	              			</tr>
+	            		</tbody>
+	          		</table>
+       		 	</div>
+			</section>
+		<!--SECTION ENCLOSING ADMIN TABLE ENDS HERE-->
+
+	   </section>
+	   <!-- SECTION CONTAINER ENDS HERE-->
+
+	</main>
+	<!-- MAIN ENDS HERE-->
+
+	<footer>
+		<p>Politico | Copyright &copy; 2019</p>
+	</footer>
+ 	
+		 <!-- <script src='script.js'></script> -->
+		 <script src='./assets/js/admin/getparty.js'></script>
+	</body>
+</html>

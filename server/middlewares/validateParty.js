@@ -6,6 +6,7 @@ const {
 } = require('express-validator');
 
 class validate {
+  
   static input(req, res, next) {
     req.checkBody('name')
       .custom(value => db.query('select * from parties where name = $1', [value]).then((party) => {

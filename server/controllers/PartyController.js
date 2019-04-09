@@ -56,19 +56,45 @@ class PartyController {
       if (!rows[0]) {
         return res.status(404).json({
           status: 404,
-          error: "party not found"
+          error: 'party not found',
         });
       }
+      console.log(rows[0]);
       return res.status(200).json({
         status: 200,
-        data: rows[0]
+        data: rows[0],
       });
     } catch (err) {
       return res.status(500).json({
         status: 500,
-        error: err.message
+        error: err.message,
       });
     }
+  }
+
+  static async deleteParty(req, res) {
+
+    const partyId = parseInt(req.params.id, 10);
+    try {
+      const { rows } = await db.query(deleteParty, [partyId]);
+      if (rows) {
+        return res.status(200).json({
+          status: 200,
+          message: 'Party has been deleted successfully',
+        });
+      }
+      return res.status(404).json({
+        status: 404,
+        error: 'Party with that id not found',
+      });
+
+    } catch (error) {
+      return res.status(500).json({
+        status: 500,
+        error: error.message
+      });
+    }
+
   }
 }
 

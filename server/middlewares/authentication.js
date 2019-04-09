@@ -1,30 +1,29 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
-
 dotenv.config();
-
-export const createToken = (payload) => {
-  const token = jwt.sign({ payload }, process.env.SECRETKEY);
-  return token;
-};
-
-export const verifyToken = (req, res, next) => {
-  const token = req.headers.x-auth-token || req.body.token;
-  if (!token) {
-    return res.status(403).json({
-      status: 403,
-      message: 'No Token was supplied',
-    });
+const { SECRET } = process.env;
+/**
+ * Handles access token generation and verification
+ */
+class Authenticator {
+  /**
+   * @description Handles access token generation
+   * @param {object} payload - The user credential {id, isAdmin}
+   * @return {string} access token
+   */
+  static createToken(payload) {
+    return jwt.sign({ payload }, SECRET, { expiresIn: '24h' });
   }
-  jwt.verify(token, process.env.SECRETKEY, (error, authData) => {
-    if (error) {
-      return res.status(403).json({
-        status: 403,
-        message: 'Invalid Token supplied',
-      });
-    }
-    req.authData = authData;
-    return next();
-  });
-};
+
+  /**
+   * @description Decodes the access token
+   * @param {string} token - The access token
+   * @returns {object} payload - the decoded access token
+   */
+  static verifyToken(token) {
+    return jwt.verify(token, SECRET);
+  }
+}
+
+export default Authenticator;

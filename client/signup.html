@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+		<meta charset='utf-8'>
+		<meta name='viewport' content='width=device-width'initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>POLITICO | SIGNUP</title>
+		<link rel='stylesheet' href='./assets/css/styles.css'>
+		<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+	</head>
+	
+	<body>
+		<!-- HEADER SECTION BEGINS HERE-->
+		<header>
+			<div class='container'>
+				<div id='index-logo'>
+					<h1>POLITICO</h1>
+				</div>
+				<nav>
+					<ul>
+						<li><a href='index.html'>HOME</a></li>
+						<li><a href='login.html'>LOGIN</a></li>
+						<li class='current'><a href='signup.html'>SIGN UP</a></li>
+						<li><a href='politician.html'>POLITICIAN</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<!-- HEADER SECTION ENDS HERE -->
+
+		<!--MAIN BEGINS HERE -->
+		<main>
+			<!-- SECTION CONTAINER STARTS HERE-->
+			<section>
+				<div class='container'>
+					<h3>CREATE AN ACCOUNT</h3>
+					<form action="" id='signup-form'>
+
+							<label for="firstname">First Name <span>*</span></label>
+							<input type="text" name="firstname" id='first-name' placeholder="Enter First Name" required>
+
+							<label for="lastname">Last Name <span>*</span></label>
+							<input type="text" name="lastname" id='last-name' placeholder="Enter Last Name" required>
+
+							<label for="othername">Other Name</label>
+							<input type="text" name="othername" id='other-name' placeholder="Enter Other Name" required>
+
+							<label for="phonenumber">Phone Number <span>*</span></label>
+		        			<input type="number" name="phonenumber" id='phonenumber' placeholder="Enter Phone Number" required>
+
+							<label for="email">Email Address <span>*</span></label>
+							<input type="email" name="email" id='email' placeholder="Enter Email address" required>
+
+			        		<label for="password">Password <span>*</span></label>
+			       		 	<input type="password" name="password" id='password' placeholder="Enter Password" required>
+
+			       		 	<span class='light-weight'>By proceeding, I agree to Politico's Terms of <a href='#'>Service</a> and <a href='#'>Privacy Policy</a></span>
+
+			       		 	<button type="submit" id='submit-btn'>Sign Up</button>
+
+			       		 	<span class='light-weight'>Already have an account? <a href='#'>Login here</a></span>
+		     		</form>
+				   </div>
+				   <div id='error'></div>
+			</section>
+			<!-- SECTION CONTAINER ENDS HERE-->
+		</main>
+		<!-- MAIN ENDS HERE -->
+		
+
+		<footer>
+			<p>Politico | Copyright &copy; 2019</p>
+		</footer>
+
+		<!-- <script src='./assets/script.js'></script> -->
+		<script src='./assets/js/user/clientLogin.js'></script>
+	</body>
+</html>
