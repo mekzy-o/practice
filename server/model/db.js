@@ -1,5 +1,6 @@
 import { Pool } from 'pg';
 import dotenv from 'dotenv';
+
 dotenv.config();
 
 let pool;
@@ -7,7 +8,7 @@ if (process.env.NODE_ENV === 'test') {
   pool = new Pool({ connectionString: process.env.TESTDB_URL });
 } else {
   pool = new Pool({
-    connectionString: process.env.DATABASE_URL || process.env.LOCALDB_URL,
+    connectionString: process.env.DATABASE_URL,
   });
 }
 
