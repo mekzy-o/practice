@@ -4,22 +4,17 @@ node_js:
 env:
 global:
   - export NODE_ENV=test
-dist: trusty
-addons:
-    postgresql: "9.5"
 services:
   - postgresql
-notifications:
-  email: false
 cache:
   directories:
     - node_modules
-before_script:
-  - psql -c "CREATE DATABASE PoliticoTest;" -U postgres
-  - psql -c "CREATE USER emeka WITH PASSWORD 'password';" -U postgres
+before_install:
   - npm install
+before_script:
+  - psql -c "CREATE DATABASE travis_test_ci;" -U postgres
 script: 
   - npm test
 after_success:
   - npm run coverage
-  - npm run coveralls
+
