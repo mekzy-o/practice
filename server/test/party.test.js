@@ -97,14 +97,18 @@ describe('POST /parties', () => {
   });
   it('should CREATE a single party', (done) => {
     const newParty = {
-      name: 'PDP',
-      hqAddress: 'Abuja, Nigeria',
+      name: 'APC',
+      hqAddress: 'Surulere, Nigeria',
       logoUrl: 'https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     };
     chai.request(app)
       .post('/api/v1/parties')
       .send(newParty)
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json')
       .end((err, res) => {
+        console.log(err);
+        console.log(res.body);
         res.should.have.status(201);
         res.body.should.have.property('status').eql(201);
         res.body.should.be.a('object');
