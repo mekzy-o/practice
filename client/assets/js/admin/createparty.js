@@ -1,35 +1,40 @@
-const baseUrl = 'http://localhost:3000/api/v1';
-const partyForm = document.querySelector('#party-form');
+const createParty = async () => {
+  const baseUrl = 'http://localhost:3000/api/v1/parties';
+  const name = document.querySelector('#party-name').value;
+  const hqAddress = document.querySelector('#hqaddress').value;
+  const logoUrl = document.querySelector('#logourl').value;
 
-const createParty = () => {
-  window.localStorage.replace('admin.dashboard');
+  const data = { name, hqAddress, logoUrl };
+
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    referrer: 'no-referrer',
+    body: JSON.stringify(data),
+  };
+
+  const request = async () => {
+    const response = await fetch(baseUrl, options);
+    const json = await response.json();
+    const display = document.getElementById('content');
+    if (json.status !== 200) {
+      display.innerHTML = `<p> ${json.error} </p>`;
+    }
+
+    if (json.status === 201) {
+      console.log('done!');
+      //   createParty();
+      display.innerHTML = '<p>DONE</p>';
+    }
+  };
+
+  request();
 };
 
-if (partyForm) {
-  partyForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.querySelector('#party-name').value;
-    const hqAddress = document.querySelector('#hqaddress').value;
-    const logoUrl = document.querySelector('#logourl').value;
-    fetch(`${baseUrl}/parties`, {
-      method: 'POST',
-      // mode:'cors',
-      headers: {
-        Accept: 'application/json, text/plain, */*',
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({ name, hqAddress, logoUrl }),
-    }).then(res => res.json())
-      .then((data) => {
-        if (data.status === 201) {
-          console.log('done!');
-        //   createParty();
-        } else {
-          console.log('Not done!');
-        }
-      }).catch((error) => {
-        console.log(error);
-      });
-
-  });
-}
+const partyForm = document.querySelector('#party-form');
+partyForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  createParty();
+});

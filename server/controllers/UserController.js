@@ -75,7 +75,7 @@ class UserController {
         });
       }
       if (userPassword) {
-        const user = { ...emailQuery.rows[0] }
+        const user = { ...emailQuery.rows[0] };
         
         const token = createToken(user);
 

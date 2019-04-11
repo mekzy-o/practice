@@ -52,7 +52,7 @@ class PartyController {
   static async getParty(req, res) {
     try {
       const { id } = req.params;
-      const { rows } = await db.query(party, [id]);
+      const { rows }= await db.query(party, [id]);
       if (!rows[0]) {
         return res.status(404).json({
           status: 404,
